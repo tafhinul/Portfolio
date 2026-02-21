@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of [Your Name] - Software Engineer">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons (Optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Three.js for 3D Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- Matrix Rain Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Tafhinul</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-sun"></i></button></li>
+            <!-- <li><a href="CV.pdf" class="btn-outline" target="_blank">Resume</a></li> -->
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Tafhinul Hossain Shahim</span></h1>
+                <p>A Creative Software Engineer building modern web experiences. Working on live enterprise projects, 
+                    supporting clients, and resolving system issues. Focused on building secure, efficient applications
+                    with practical data processing and system integration workflows</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+            <div id="hero-3d-container"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <!-- Terminal Window -->
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-button red"></div>
+                    <div class="terminal-button yellow"></div>
+                    <div class="terminal-button green"></div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">user@portfolio:~$</span> <span id="cmd-1" class="cmd"></span><span class="cursor" id="cursor-1">_</span>
+                    </div>
+                    <div id="output-1" class="terminal-line output" style="display: none;">
+                        Tafhinul Hossain Shahim
+                    </div>
+                    <div class="terminal-line" style="display: none;" id="line-2">
+                        <span class="prompt">user@portfolio:~$</span> <span id="cmd-2" class="cmd"></span><span class="cursor" id="cursor-2">_</span>
+                    </div>
+                    <div id="output-2" class="terminal-line output" style="display: none;">
+                        > Building scalable web apps<br>
+                        > Exploring Computer Vision<br>
+                        > Mastering Oracle APEX
+                    </div>
+                    <div class="terminal-line" id="line-cursor" style="display: none;">
+                        <span class="prompt">user@portfolio:~$</span> <span class="cursor">_</span>
+                    </div>
+                </div>
+            </div>
+
+            <p id="about-descriptio">I have completed my B.Sc in Computer Science and Engineering from Port City International University, Bangladesh. 
+                Currently, I working as a Programmer, at one of the most reputed IT comapny of Chattogram 
+                named New Technology System Ltd. .</p></div><br>
+            <br>
+            <a href="CV.pdf" class="btn" target="_blank">Download Resume</a>
+            <div class="about-image">
+                <!-- <img src="profile.jpg" alt="Tafhinul Hossain Shahim"> -->
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="fab fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <!-- <div class="skill-card">
+                    <i class="fab fa-react"></i>
+                    <span>React</span>
+                </div> -->
+                <!-- <div class="skill-card">
+                    <i class="fab fa-node-js"></i>
+                    <span>Node.js</span>
+                </div> -->
+                <div class="skill-card">
+                    <i class="fab fa-python"></i>
+                    <span>Python</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <span>HTML</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-css3-alt"></i>
+                    <span>CSS</span>
+                </div>  
+                    <div class="skill-card">
+                        <i class="fas fa-database"></i>
+                        <span>Oracle APEX</span>
+                    </div>  
+                    <div class="skill-card">    
+                        <i class="fas fa-cogs"></i>
+                        <span>PL/SQL</span>
+                    </div>  
+                    <div class="skill-card">    
+                        <i class="fas fa-cogs"></i>
+                        <span>Machine Learning</span>
+                    </div>
+                     <div class="skill-card">    
+                        <i class="fas fa-cogs"></i>
+                        <span>Computer Vision</span>
+                    </div>
+                        <!-- <div class="skill-card">    
+                        <i class="fas fa-cogs"></i>
+                        <span>Deep Learning</span>
+                    </div> -->
+                        <div class="skill-card">    
+                        <i class="fas fa-cogs"></i> 
+                        <span>Data Science</span>
+                        </div>
+                         <div class="skill-card">    
+                        <i class="fas fa-cogs"></i> 
+                        <span>Data Analytics</span>
+                        </div>
+                    </div>
+            </div>
+            </div>
+            
+            <!-- Certifications -->
+            <div class="certifications-section">
+                <h3 class="section-subtitle">Certifications</h3>
+                <div class="certifications-container">
+                    <!-- Replace '#' with your file path (e.g., 'certs/certificate.pdf') or URL -->
+                    <a href="https://www.coursera.org/account/accomplishments/records/SQ9JUNVQTX4N" target="_blank" class="skill-card">
+                        <i class="fas fa-certificate"></i>
+                        <span>Advanced Learning Algorithms Specialization (Stanford University)</span>
+                    </a> </div>
+                    <div class="certifications-container">
+                    <a href="Data Science and Analytics.pdf" target="_blank" class="skill-card">
+                        <i class="fas fa-certificate"></i>
+                        <span>Data Science and Analytics</span>
+                    </a> </div>
+                    <div class="certifications-container">
+                    <a href="https://www.credly.com/badges/833d2dd8-dc14-4523-a195-1bf2360ac4a6" target="_blank" class="skill-card">
+                        <i class="fas fa-certificate"></i>
+                        <span>Introduction to Data Science</span>
+                    </a> </div>
+
+                </div>
+            </div>
+
+            <!-- Experience Timeline -->
+            <div class="timeline-section">
+                <h3 class="section-subtitle">Experience</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Sep 2025 - Present</div>
+                        <div class="timeline-content">
+                            <h3>Junior Software Engineer</h3>
+                            <p>New Technology System Ltd.</p>
+                            <p>Leading a team and architecting scalable web solutions. Now work on live vat projects (e-Mushok)</p>
+                        </div>
+                    </div>
+                    <!-- <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2022 - 2024</div>
+                        <div class="timeline-content">
+                            <h3>Web Developer</h3>
+                            <p>Creative Digital Agency</p>
+                            <p>Developed responsive websites and optimized performance for clients.</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container">
+        <h2>What I Do</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-card-inner">
+                    <div class="service-card-front">
+                        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Web Development</h3>
+                    </div>
+                    <div class="service-card-back">
+                        <h3>Web Development</h3>
+                        <p>Building responsive, high-performance web applications using React, Node.js, and Oracle APEX.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-inner">
+                    <div class="service-card-front">
+                        <div class="service-icon"><i class="fas fa-brain"></i></div>
+                        <h3>AI & Machine Learning</h3>
+                    </div>
+                    <div class="service-card-back">
+                        <h3>AI & Machine Learning</h3>
+                        <p>Developing intelligent systems with Computer Vision, CNNs, and predictive modeling using Python.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-inner">
+                    <div class="service-card-front">
+                        <div class="service-icon"><i class="fas fa-database"></i></div>
+                        <h3>Database Solutions</h3>
+                    </div>
+                    <div class="service-card-back">
+                        <h3>Database Solutions</h3>
+                        <p>Designing robust database architectures and efficient PL/SQL procedures for enterprise data management.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>My Projects</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="ai">AI</button>
+        </div>
+        <div class="project-grid">
+            <!-- Project Card 1 -->
+            <div class="card" data-category="web" data-details="React & Oracle based investment system for Chittagong Port Authority. Designed Oracle database structures and developed Python scripts to extract financial data. Built a React-based UI and implemented an enterprise 2FA system using Oracle APEX." 
+            data-link="https://github.com/tafhinul">
+                <div class="card-image"></div> <!-- Placeholder for image -->
+                <div class="card-info">
+                    <h3>Bank FDR System</h3>
+                    <p>React & Oracle based investment system for Chittagong Port Authority.</p>
+                    <button class="link project-details-btn">Read More &rarr;</button>
+                </div>
+            </div>
+            <!-- Project Card 2 -->
+            <div class="card" data-category="ai" data-details="Real-time gesture control using CNN & Computer Vision. Built a real-time hand gesture recognition system using computer vision and CNN-based deep learning models. Implemented hand region detection and gesture classification."
+             data-link="https://github.com/tafhinul/hand-gesture-recognition">
+                <div class="card-image"></div>
+                <div class="card-info">
+                    <h3>Hand Gesture Recognition</h3>
+                    <p>Real-time gesture control using CNN & Computer Vision.</p>
+                    <button class="link project-details-btn">Read More &rarr;</button>
+                </div>
+            </div>
+            <!-- Project Card 3 -->
+            <div class="card" data-category="web" data-details="Oracle APEX application for automated meal tracking. Built an internal meal management system using Oracle APEX with PL/SQL. Implemented automated meal cost calculation, summaries, and financial reports." 
+            data-link="https://github.com/tafhinul/Oracle-APEX-project-meal-management-system">
+                <div class="card-image"></div>
+                <div class="card-info">
+                    <h3>Meal Management System</h3>
+                    <p>Oracle APEX application for automated meal tracking.</p>
+                   <button class="link project-details-btn">Read More &rarr;</button>
+                </div>
+            </div>  
+                <!-- Project Card 4 -->
+                <div class="card" data-category="ai" data-details="MLflow-based pipeline for model management and deployment. This project is a Meal Management System (MMS) built using Oracle APEX to manage daily meals, expenses, and member contributions efficiently. It integrates a machine learning module that predicts next month’s meal expenses using Gradient Boosting Regressor, helping administrators plan budgets accurately."
+                data-link="https://github.com/tafhinul/Meal-Management-System-with-AI-Based-Monthly-Expense-Prediction">
+                    <div class="card-image "></div>
+                    <div class="card-info"> 
+                        <h3>MLOps Pipeline</h3>
+                        <p>MLflow-based pipeline for model management and deployment.</p>
+                        <button class="link project-details-btn">Read More &rarr;</button>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="container">
+        <h2>Latest Articles</h2>
+        <div class="project-grid">
+            <!-- Blog Post 1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="oracle.webp" alt="Oracle APEX Optimization" loading="lazy">
+                </div>
+                <div class="card-info">
+                    <span class="post-date">Oct 15, 2025</span>
+                    <h3>Optimizing Oracle APEX</h3>
+                    <p>Best practices for building scalable enterprise applications with PL/SQL.</p>
+                    <a href="https://medium.com/@tafhinulhossain1414/beyond-the-query-what-it-really-means-to-be-an-oracle-developer-5478110b0756" class="link">Read More &rarr;</a>
+                </div>
+            </div>
+            <!-- Blog Post 2 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="caries.jfif" alt="Dental AI Detection" loading="lazy">
+                </div>
+                <div class="card-info">
+                    <span class="post-date">Dec 8,2025</span>
+                    <h3>AI-Based Dental Caries Detection Using YOLOv8</h3>
+                    <p> A Complete Workflow With Algorithm and Code.</p>
+                    <a href="https://medium.com/@tafhinulhossain1414/ai-based-dental-caries-detection-using-yolov8-a-complete-workflow-with-algorithm-and-code-b6f1299768e9" class="link">Read More &rarr;</a>
+                </div>
+            </div>
+            <!-- Blog Post 3 -->
+            <!-- <div class="card">
+                <div class="card-image"></div>
+                <div class="card-info">
+                    <span class="post-date">Aug 10, 2025</span>
+                    <h3>Understanding MLOps</h3>
+                    <p>How to manage experiment tracking and model packaging using MLflow.</p>
+                    <a href="#" class="link">Read More &rarr;</a>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container contact-section">
+        <p class="sub-title">What's Next?</p>
+        <h2 class="title">Get In Touch</h2>
+        <p class="description">
+            Although I'm not currently looking for any new opportunities, my inbox is always open. 
+            Whether you have a question or just want to say hi, I'll try my best to get back to you!
+        </p>
+        
+        <!-- Contact Form -->
+        <form id="contact-form" class="contact-form">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+
+        <!-- <div class="socials">
+            <a href="https://github.com/tafhinul?tab=repositories"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/tafhinul-hossain/"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div> -->
+    </section>
+
+    <footer>
+        <div class="socials">
+            <a href="https://github.com/tafhinul?tab=repositories"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/tafhinul-hossain/"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; <span id="year"></span> Tafhinul Hossain Shahim. All rights reserved.</p>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title" class="modal-title">Project Title</h3>
+            <p id="modal-desc" class="modal-desc">Project description goes here.</p>
+            <a href="javascript:void(0)" class="btn" id="modal-link" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+    </div>
+
+    <!-- Click Sound Effect -->
+    <audio id="click-sound" src="click.mp3"></audio>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
