@@ -202,6 +202,9 @@ if (canvas) {
     });
 
     window.addEventListener('click', (e) => {
+        // Prevent explosion when clicking interactive elements like buttons, links, or the modal
+        if (e.target.closest('a, button, input, textarea, .modal-content')) return;
+
         for (let i = 0; i < 20; i++) {
             explosionParticles.push(new ExplosionParticle(e.clientX, e.clientY));
         }
@@ -344,53 +347,103 @@ window.addEventListener('load', () => {
 
 // Terminal Typing Animation
 document.addEventListener('DOMContentLoaded', () => {
-    const cmd1Text = "whoami";
-    const cmd2Text = "cat profile.txt";
-
     const cmd1Element = document.getElementById('cmd-1');
     const cmd2Element = document.getElementById('cmd-2');
-
     const output1 = document.getElementById('output-1');
-    const line2 = document.getElementById('line-2');
     const output2 = document.getElementById('output-2');
+    
+    const line2 = document.getElementById('line-2');
     const lineCursor = document.getElementById('line-cursor');
     const cursor1 = document.getElementById('cursor-1');
     const cursor2 = document.getElementById('cursor-2');
 
-    const typeSpeed = 100;
-    const delay = 500;
+    // Data to type
+    const cmd1Text = "whoami";
+    const output1Text = "Tafhinul Hossain Shahim";
+    
+    const cmd2Text = "cat profile.txt";
+    const output2Lines = [
+        "> Building scalable web apps",
+        "> Exploring Computer Vision",
+        "> Mastering Oracle APEX"
+    ];
 
-    function type(element, text, callback) {
+    const typeSpeed = 80;   // Speed for commands
+    const fastSpeed = 30;   // Speed for output results (hacker style is fast)
+    const delay = 400;      // Pause between steps
+
+    // Helper: Type text into an element
+    function type(element, text, speed, callback) {
         let i = 0;
         element.innerHTML = "";
-        
         function typing() {
             if (i < text.length) {
                 element.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(typing, typeSpeed);
+                setTimeout(typing, speed);
             } else if (callback) {
                 callback();
             }
         }
         typing();
     }
-    
-    setTimeout(() => {
-        cursor1.style.display = 'inline-block';
-        type(cmd1Element, cmd1Text, () => {
-            cursor1.style.display = 'none';
-            output1.style.display = 'block';
-            line2.style.display = 'block';
 
-            setTimeout(() => {
-                cursor2.style.display = 'inline-block';
-                type(cmd2Element, cmd2Text, () => {
-                    cursor2.style.display = 'none';
-                    output2.style.display = 'block';
-                    lineCursor.style.display = 'block';
-                });
-            }, delay);
+    // Helper: Type array of lines with <br>
+    function typeLines(element, lines, speed, callback) {
+        let lineIdx = 0;
+        element.innerHTML = "";
+        
+        function processLine() {
+            if (lineIdx < lines.length) {
+                let currentLine = lines[lineIdx];
+                let charIdx = 0;
+                
+                function typeChar() {
+                    if (charIdx < currentLine.length) {
+                        element.innerHTML += currentLine.charAt(charIdx);
+                        charIdx++;
+                        setTimeout(typeChar, speed);
+                    } else {
+                        element.innerHTML += "<br>";
+                        lineIdx++;
+                        setTimeout(processLine, speed * 3); // Pause slightly between lines
+                    }
+                }
+                typeChar();
+            } else if (callback) {
+                callback();
+            }
+        }
+        processLine();
+    }
+    
+    // Start Animation Sequence
+    setTimeout(() => {
+        if(cursor1) cursor1.style.display = 'inline-block';
+        
+        // 1. Type 'whoami'
+        type(cmd1Element, cmd1Text, typeSpeed, () => {
+            if(cursor1) cursor1.style.display = 'none';
+            if(output1) output1.style.display = 'block';
+            
+            // 2. Type Name Output
+            type(output1, output1Text, fastSpeed, () => {
+                if(line2) line2.style.display = 'block';
+                if(cursor2) cursor2.style.display = 'inline-block';
+                
+                setTimeout(() => {
+                    // 3. Type 'cat profile.txt'
+                    type(cmd2Element, cmd2Text, typeSpeed, () => {
+                        if(cursor2) cursor2.style.display = 'none';
+                        if(output2) output2.style.display = 'block';
+                        
+                        // 4. Type Skills List
+                        typeLines(output2, output2Lines, fastSpeed, () => {
+                            if(lineCursor) lineCursor.style.display = 'block';
+                        });
+                    });
+                }, delay);
+            });
         });
     }, delay);
 });
